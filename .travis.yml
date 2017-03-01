@@ -1,0 +1,21 @@
+language: go
+go:
+- 1.8
+
+script:
+  - go get github.com/mitchellh/gox
+  - gox -osarch="linux/amd64 windows/amd64 darwin/amd64"
+
+deploy:
+  provider: releases
+  api_key:
+    secure: UYV7hOp3Y+2bA57jF8uEDvPIdZj6BaF1a+yrW/8keMvHSlGcXdHM5y+oyBBEQn7pgL9jBjr3fDGzA+ZnvFVKWvLKXD7RxwePoYUqNaphljPFSuiVnjimjjRTvxpFT6RMQpfueg+M5djnWdnCXBTuXjzozfIGxVyMpMUUiMPrLtkRWqRmyJH8fj6IEMAhgHj2yhVJ6Co/wWQXxVxZiG9wMUCL7qbXkZQ+Z30XQPdPSXtgUhwWFRyiVh2nFEAybha6c3SuJaCCpCAakpfqHtiSEKHhvMmg/8IQ0Ybfu+yS8qeIWFCrdndtpNGn73RKcYvkW9M1A0vgmecDJWW8MM/d1/dsPcb1fM3vXpZrOETU5i9yxtb76rYodbZHXCoHecYBhOtDLJJpENeRlXl6ruvJBBckvtvNVHpuMkrpVWC3PD4NO23uqndnu9n62XSy9l7rZ92r9kGRCVbdwFtZoKGOSiT3BfVrxd4KUdvbcgEyx0xGTJtCWNyDWPKDX2MJeFHcuk1V9Je2rQ9WaSjqTVwW3gHpqELRkYKpRbyJQngFDxhj1OCNrV2NbDaYCgelyHmZWEn5hYBEeYBrSG5UYFHekN/4BnBhs2I8j17lcTdFhjIHcFKOMxRZzxlp/OaJxWAo17JZpHQrp+P1vK+F50hlcMR8xvg8dJKD1frYF5Nj0zg=
+  file:
+    - "client_darwin_amd64"
+    - "client_linux_amd64"
+    - "client_windows_amd64.exe"
+  on:
+   tags: true
+
+notifications:
+  email: false
